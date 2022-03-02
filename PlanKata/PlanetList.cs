@@ -66,7 +66,7 @@ namespace PlanKata
                 if (planet.Material == material)
                     c++;
             }
-            return 0;
+            return c;
         }
 
         public int TotalAmountOfMoons()
