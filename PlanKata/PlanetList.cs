@@ -6,19 +6,24 @@ using System.Threading.Tasks;
 
 namespace PlanKata
 {
+    public delegate void PlanetDelegate(IPlanet planetList);
     public class PlanetList : IPlanetList
     {
         List<IPlanet> _planets = new List<IPlanet>();
 
         public static class Factory
         {
-            internal static IPlanetList CreatePlanetsList(int nrOfPlanets)
+            internal static PlanetList CreatePlanetsList(int nrOfPlanets, PlanetDelegate NewPlanetAction)
             {
                 var planetList = new PlanetList();
 
                 for (int i = 0; i < nrOfPlanets; i++)
                 {
-                    planetList._planets.Add(Planet.Factory.CreateRandomPlanets());
+                   var newPlanets = Planet.Factory.CreateRandomPlanets();
+                   planetList._planets.Add(newPlanets);
+
+                   NewPlanetAction(newPlanets);
+
                 }
                 return planetList;
             }

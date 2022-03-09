@@ -15,7 +15,7 @@ var planets = PlanetList.Factory.CreatePlanetsList(10);
 Console.WriteLine(planets);
 Console.WriteLine("-------------------------");
 */
-var planets = PlanetList.Factory.CreatePlanetsList(5);
+var planets = PlanetList.Factory.CreatePlanetsList(5, PlanetDelegate);
 
 planets.Sort();
 Console.WriteLine("A sorted list of 5 planets, sorted by Mass:\n");
@@ -35,3 +35,8 @@ Console.WriteLine(planets.Count("Gas"));
 
 Console.WriteLine($"\nFrist planet: {planets[0]}");
 Console.WriteLine($"\nLast planet: {planets[4]}");
+
+void PlanetDelegate(IPlanet planetDelegate)
+{
+    Console.WriteLine("!");
+}
